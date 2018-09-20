@@ -13,5 +13,5 @@ app.get('/api/products', function (req, res) {
 });
 
 app.listen(5002, function () {
-  console.log('Example app listening on port 5000!')
+  console.log('Example app listening on port 5002!')
 });

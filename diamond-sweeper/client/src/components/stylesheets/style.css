@@ -27,3 +27,6 @@ td {
   background-image: url(question.png);
 }
 
+.blank {
+  background-image: none;
+}

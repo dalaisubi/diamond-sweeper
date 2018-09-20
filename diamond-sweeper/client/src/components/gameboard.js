@@ -9,10 +9,7 @@ class GameBoard extends Component {
     this.state = {
       info: [],
       arr: [1,2,3,4,5,6,7,8],
-      cell_of_diamond : [],
-      unknown_cls: "unknown",
-      diamond_cls: "diamond",
-      arrow_cls: "arrow"
+      cell_of_diamond : []
     }
   }
   random_number_generator(){
@@ -27,7 +24,6 @@ class GameBoard extends Component {
     while(new_arr.length < 8){
       var new_number = this.random_number_generator();
       if (new_arr.indexOf(new_number) === -1){
-        console.log(new_number);
         new_arr.push(new_number);
       }
     }
@@ -38,10 +34,8 @@ class GameBoard extends Component {
       .then(product_info => this.setState({product_info}, () => console.log("Here's the data coming from backend", product_info)));
     }
   render() {
-    console.log(this.state.cell_of_diamond)
     return (
       <div>
-        <h1>Hi</h1>
         <div id="container">
           <div>
             <div className="messages"></div>
@@ -49,8 +43,7 @@ class GameBoard extends Component {
               <tbody>
               {
                 this.state.arr.map((number) => <EachRow row={number} cell_of_diamond={this.state.cell_of_diamond} />)
-              }              
-                
+              }                
               </tbody>
             </table>
           </div>

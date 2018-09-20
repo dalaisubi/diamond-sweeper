@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+var total_score = 64;
+var collected_diamond = 0;
 
 class EachCell extends Component {
   constructor(props) {
@@ -7,32 +9,38 @@ class EachCell extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.state = {
       class_name: "unknown",
-      count: 64
     }
   }	
   handleClick(event){
-    console.log(this.props.cell_of_diamond);
-    var index = parseInt(event.target.getAttribute('id'));
-    if (this.props.cell_of_diamond.indexOf(index) > -1){
-      this.setState({
-        class_name : "diamond",
-        count: this.state.count - 1
-      });     
+    var current_class = event.target.attributes[1].value;
+    
+    if(current_class === "cell unknown" && collected_diamond < 8) {
+      console.log(current_class,'=======');
+      var index = parseInt(event.target.getAttribute('id'));
+      if (this.props.cell_of_diamond.indexOf(index) > -1){
+        this.setState({
+          class_name : "diamond",
+        }); 
+        collected_diamond = collected_diamond + 1;    
+      }
+      else {
+        this.setState({
+          class_name : "blank",
+        });
+      }
+      total_score = total_score - 1;
     }
-    else {
-      this.setState({
-        class_name : "blank",
-        count: this.state.count - 1
-      });
-    }
-    /*this.setState({
-        count: this.state.count - 1
-    });*/
+    
   }	
   render() { 
-    console.log(this.state.count);    
+    console.log(total_score, collected_diamond);    
     return (        
-          <td data-id={this.props.cell} id={this.props.row + "" + this.props.cell} onClick={this.handleClick} ><div id={this.props.row + "" + this.props.cell} className={"cell " + this.state.class_name}>{this.state.attempt}</div></td>
+          <td data-tag={this.state.class_name} id={this.props.row + "" + this.props.cell} onClick={this.handleClick} >
+            
+            <div id={this.props.row + "" + this.props.cell} className={"cell " + this.state.class_name}>
+              
+            </div>
+          </td>
     );
   }
 }

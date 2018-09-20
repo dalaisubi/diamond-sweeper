@@ -34,6 +34,7 @@ class GameBoard extends Component {
       .then(product_info => this.setState({product_info}, () => console.log("Here's the data coming from backend", product_info)));
     }
   render() {
+    console.log(this.state.cell_of_diamond)
     return (
       <div>
         <div id="container">
@@ -43,7 +44,8 @@ class GameBoard extends Component {
               <tbody>
               {
                 this.state.arr.map((number) => <EachRow row={number} cell_of_diamond={this.state.cell_of_diamond} />)
-              }                
+              }              
+                
               </tbody>
             </table>
           </div>

@@ -6,7 +6,7 @@ class EachRow extends Component {
   	super(props);
   	this.state = {
   		total_cell: [1,2,3,4,5,6,7,8],
-  		attempt: 0
+  		cls_blank: "unknown"
   	}
 
   }	
@@ -20,7 +20,7 @@ class EachRow extends Component {
         <tr>
         	{
         		this.state.total_cell.map((number) =>
-        			<EachCell cell={number} row={this.props.row} cell_of_diamond={this.props.cell_of_diamond} />
+        			<EachCell cell={number} row={this.props.row} cell_of_diamond={this.props.cell_of_diamond} class_name={this.state.cls_blank} />
         		)
         	}
         </tr>

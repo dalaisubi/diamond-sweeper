@@ -54,7 +54,7 @@ class EachCell extends Component {
 
   handleClick(event){
     var current_class = event.target.attributes[1].value;
-
+    
     if(current_class === "cell unknown" && collected_diamond < 8) {
 
       var index = parseInt(event.target.getAttribute('id'));
@@ -69,7 +69,7 @@ class EachCell extends Component {
           this.state.new_cell.splice(new_arr, 1);
         };    
       }
-      else {
+      else if(this.props.cell_of_diamond.indexOf(index) == -1) {
         let nearest_cell = this.nearestElement(index) , cls = null;
         console.log(nearest_cell, index);
         if(nearest_cell < index ) {
@@ -90,11 +90,10 @@ class EachCell extends Component {
         });
       }
       total_score = total_score - 1;
-    }
-    
+    }    
   }	
   render() { 
-    /*console.log(total_score, collected_diamond);*/    
+    console.log(total_score, collected_diamond); 
     return (        
           <td data-tag={this.state.class_name} id={this.props.row + "" + this.props.cell} onClick={this.handleClick} >
             

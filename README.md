@@ -25,9 +25,9 @@ npm run client
 
 ### Technologies
 
-> Node/Express
-> React
-> webpack
+#### Node/Express
+#### React
+#### webpack
 
 ### License
 

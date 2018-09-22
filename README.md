@@ -1,4 +1,4 @@
-# Diamond-Sweeper using React Express
+# Diamond-Sweeper using React-Express
 
 
 ## Quick Start
@@ -10,7 +10,7 @@ npm install
 # Install dependencies for client
 npm run client-install
 
-# Run the client & server with concurrently
+# Run the client & server with concurrently (Recommended)
 npm run dev
 
 # Run the Express server only
@@ -19,17 +19,17 @@ npm run start
 # Run the React client only
 npm run client
 
-# Server runs on http://localhost:5000 and client on http://localhost:3000
+# Server runs on http://localhost:5002 and client on http://localhost:3000
 ```
 ## App Info
 
 ### Technologies
 
-> Node/Express
+* [Node](https://nodejs.org/en/)/[Express](https://expressjs.com/)
 
-> React
+* [React](https://github.com/facebookincubator/create-react-app)
 
-> webpack
+* [Webpack](https://webpack.js.org/)
 
 ### License
 

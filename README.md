@@ -1,4 +1,4 @@
-# Diamond-Sweeper using React/Redux Express
+# Diamond-Sweeper using React
 
 
 ## Quick Start

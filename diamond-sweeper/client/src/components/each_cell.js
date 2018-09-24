@@ -39,8 +39,6 @@ class EachCell extends Component {
       min_digit = arr_of_diamond[arr_of_diamond.length - 1];
     }
 
-    console.log('min_digit :',min_digit, ' index :', index, ' max_digit :' , max_digit , '  : ', this.state.new_cell);
-
     if(min_digit == undefined && min_digit == null){
       return max_digit;
     }
@@ -59,8 +57,8 @@ class EachCell extends Component {
 
       var index = parseInt(event.target.getAttribute('id'));
 
-      if (this.props.cell_of_diamond.indexOf(index) > -1){
-        this.setState({
+      if (this.props.cell_of_diamond.indexOf(index) > -1){ 
+        this.setState({ 
           class_name : "diamond",
         }); 
         collected_diamond = collected_diamond + 1;
@@ -69,16 +67,16 @@ class EachCell extends Component {
           this.state.new_cell.splice(new_arr, 1);
         };    
       }
-      else if(this.props.cell_of_diamond.indexOf(index) == -1) {
+      
+      else if(this.props.cell_of_diamond.indexOf(index) == -1 && this.props.shouldBlank_arr.indexOf(index) == -1) {  
         let nearest_cell = this.nearestElement(index) , cls = null;
-        console.log(nearest_cell, index);
-        if(nearest_cell < index ) {
+        if(nearest_cell < index ) { 
           cls = "arrow rotate-left";
           if(this.digits(nearest_cell) < this.digits(index)){
             cls = "arrow rotate-up";
           }
         }
-        else {
+        else { 
           cls = "arrow rotate-right";
           if(this.digits(nearest_cell) > this.digits(index)){
             cls = "arrow rotate-down";
@@ -90,14 +88,35 @@ class EachCell extends Component {
         });
       }
       total_score = total_score - 1;
-    }    
+
+    }  
+    if(collected_diamond == 8){
+      this.props.score(total_score);
+    }  
   }	
+  componentDidMount(){ 
+    /*let id = parseInt(this.props.row + "" + this.props.cell);
+    if(this.props.shouldBlank_arr.indexOf(id) > -1) {
+      this.setState({
+        class_name : 'blank'
+      });
+    }
+*/
+  }
   render() { 
-    console.log(total_score, collected_diamond); 
+    let id = parseInt(this.props.row + "" + this.props.cell);
+    let class_name = "cell "  + this.state.class_name ; 
+    if(this.props.shouldBlank_arr.indexOf(id) > -1){
+      console.log('ii')
+      class_name = "cell blank";
+    }
+    /*else {
+      this.props.shouldBlank(id);
+    }*/
     return (        
           <td data-tag={this.state.class_name} id={this.props.row + "" + this.props.cell} onClick={this.handleClick} >
             
-            <div id={this.props.row + "" + this.props.cell} className={"cell " + this.state.class_name}>
+            <div id={this.props.row + "" + this.props.cell} className={class_name}>
               
             </div>
           </td>

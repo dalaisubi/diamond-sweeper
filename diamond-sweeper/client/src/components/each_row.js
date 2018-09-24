@@ -20,7 +20,7 @@ class EachRow extends Component {
         <tr>
         	{
         		this.state.total_cell.map((number) =>
-        			<EachCell cell={number} row={this.props.row} cell_of_diamond={this.props.cell_of_diamond} class_name={this.state.cls_blank} />
+        			<EachCell cell={number} {...this.props} />
         		)
         	}
         </tr>
